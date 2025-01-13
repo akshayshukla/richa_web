@@ -53,6 +53,15 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		.filterDiv {
+			display: none;
+		}
+
+		.show {
+			display: block;
+		}
+	</style>
 
 	</head>
 	<body>
@@ -616,87 +625,18 @@
 						<div class="col-md-12">
 							<p class="work-menu">
 								<button class="btn active" onclick="filterSelection('all')"> Show all</button>
-								<button class="btn" onclick="filterSelection('cars')"> Cars</button>
-								<button class="btn" onclick="filterSelection('animals')"> Animals</button>
-								<button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
-								<button class="btn" onclick="filterSelection('colors')"> Colors</button>
+								<button class="btn" onclick="filterSelection('ai_safety')"> AI Safety</button>
+								<button class="btn" onclick="filterSelection('products')"> Products</button>
+								<button class="btn" onclick="filterSelection('ml_ai')"> ML & AI</button>
+								<button class="btn" onclick="filterSelection('enterpreneurship')"> Enterpreneurship</button>
+								<button class="btn" onclick="filterSelection('ar_vr')"> AR-VR</button>
+								<button class="btn" onclick="filterSelection('software_engineering')"> Software Engineering</button>
+								<button class="btn" onclick="filterSelection('desing')"> Design</button>
+								<button class="btn" onclick="filterSelection('web3')"> Web3</button>
 							</p>
 						</div>
 					</div>
-					<!-- <div class="row">
-						<div class="col-md-6 animate-box filterDiv cars" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url(images/img-1.jpg);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 01</a></h3>
-										<span>Website</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div> -->
-
-<!-- Projects start here -->
-						<section class="colorlib-about" data-section="about">
-							<div class="row">
-								<div class="col-md-6 animate-box filterDiv cars" data-animate-effect="fadeInLeft">
-									<div class="project" style="background-image: url(images/img-1.jpg);">
-										<div class="desc">
-											<div class="con">
-												<h3><a target="_blank" href="archiDAO.html">ArchiDAO - Deecentralised Autonomous organisation for AEC Industry</a></h3>
-												<span>Co-Founder</span>
-												<p class="icon">
-													<span><a href="#"><i class="icon-share3"></i></a></span>
-													<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-													<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 animate-box filterDiv colors fruits" data-animate-effect="fadeInRight">
-									<div class="project" style="background-image: url(images/img-2.jpg);">
-										<div class="desc">
-											<div class="con">
-												<h3><a href="plus.html">PLUS - AI Ecosystem for Architects and Interior Designer</a></h3>
-												<span>C0-Founder</span>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 animate-box filterDiv colors fruits" data-animate-effect="fadeInRight">
-									<div class="project" style="background-image: url(images/img-2.jpg);">
-										<div class="desc">
-											<div class="con">
-												<h3><a href="curatorai.html">Curator AI</a></h3>
-												<span>C0-Founder | Hackathon</span>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 animate-box filterDiv colors fruits" data-animate-effect="fadeInRight">
-									<div class="project" style="background-image: url(images/img-2.jpg);">
-										<div class="desc">
-											<div class="con">
-												<h3><a href="networkingapp.html">Shore AI</a></h3>
-												<span>C0-Founder | Spring 2024</span>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							
-						</section>
-
-
-
-
+					<div class="row">
 						<div class="col-md-6 animate-box filterDiv colors fruits" data-animate-effect="fadeInRight">
 							<div class="project" style="background-image: url(images/img-2.jpg);">
 								<div class="desc">
@@ -916,6 +856,51 @@
 	
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+	<script>
+		filterSelection("all")
+		function filterSelection(c) {
+		
+		var x, i;
+		x = document.getElementsByClassName("filterDiv");
+		if (c == "all") c = "";
+		for (i = 0; i < x.length; i++) {
+			w3RemoveClass(x[i], "show");
+			if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+		}
+		}
+		function w3AddClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+			}
+		}
+
+		function w3RemoveClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				while (arr1.indexOf(arr2[i]) > -1) {
+				arr1.splice(arr1.indexOf(arr2[i]), 1);     
+				}
+			}
+			element.className = arr1.join(" ");
+		}
+
+		// Add active class to the current button (highlight it)
+		var btnContainer = document.getElementById("myBtnContainer");
+		var btns = btnContainer.getElementsByClassName("btn");
+		for (var i = 0; i < btns.length; i++) {
+		btns[i].addEventListener("click", function(){
+			var current = document.getElementsByClassName("active");
+			current[0].className = current[0].className.replace(" active", "");
+			this.className += " active";
+		});
+		}
+	</script>
+
 
 	</body>
 </html>
